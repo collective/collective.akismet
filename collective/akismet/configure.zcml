@@ -9,6 +9,8 @@
 
   <five:registerPackage package="." initialize=".initialize" />
 
+  <include package=".browser" />
+	
   <genericsetup:registerProfile
       name="default"
       title="Akismet spam protection"
@@ -19,17 +21,9 @@
 
   <include package="plone.app.registry" />
 
-  <!-- Control panel -->
-  <browser:page
-      name="akismet-settings"
-      for="Products.CMFPlone.interfaces.IPloneSiteRoot"
-      class=".controlpanel.AkismetSettingsControlPanel"
-      permission="cmf.ManagePortal"
-      />
-	  
   <!-- Declare that collective.akismet provides a Captcha field that can be 
        can be used by plone.app.discussion to add a Captcha field to comment 
        forms. -->
   <meta:provides feature="plone.app.discussion-captcha" />	  
-  
+		  
 </configure>

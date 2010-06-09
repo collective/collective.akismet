@@ -1,0 +1,26 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"    
+    xmlns:five="http://namespaces.zope.org/five"
+    xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+    xmlns:i18n="http://namespaces.zope.org/i18n"
+    xmlns:meta="http://namespaces.zope.org/meta"    
+    i18n_domain="collective.akismet">
+
+  <!-- Control panel -->
+  <browser:page
+      name="akismet-settings"
+      for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+      class=".controlpanel.AkismetSettingsControlPanel"
+      permission="cmf.ManagePortal"
+      />
+      
+  <!-- Akismet validator view -->
+  <browser:view
+      name="akismet"
+      for="*"
+      class=".validator.AkismetValidatorView"
+      permission="zope2.Public"
+      />
+          
+</configure>
