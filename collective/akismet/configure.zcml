@@ -1,0 +1,35 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"    
+    xmlns:five="http://namespaces.zope.org/five"
+    xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+    xmlns:i18n="http://namespaces.zope.org/i18n"
+    xmlns:meta="http://namespaces.zope.org/meta"	
+    i18n_domain="collective.akismet">
+
+  <five:registerPackage package="." initialize=".initialize" />
+
+  <genericsetup:registerProfile
+      name="default"
+      title="Akismet spam protection"
+      directory="profiles/default"
+      description="Provides Akismet spam protection for plone.app.discussion comments."
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      />
+
+  <include package="plone.app.registry" />
+
+  <!-- Control panel -->
+  <browser:page
+      name="akismet-settings"
+      for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+      class=".controlpanel.AkismetSettingsControlPanel"
+      permission="cmf.ManagePortal"
+      />
+	  
+  <!-- Declare that collective.akismet provides a Captcha field that can be 
+       can be used by plone.app.discussion to add a Captcha field to comment 
+       forms. -->
+  <meta:provides feature="plone.app.discussion-captcha" />	  
+  
+</configure>
