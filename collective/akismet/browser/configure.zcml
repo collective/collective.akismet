@@ -22,5 +22,13 @@
       class=".validator.AkismetValidatorView"
       permission="zope2.Public"
       />
-          
+
+  <!-- Akismet verify key view -->
+  <browser:view
+      name="verify-key"
+      for="*"
+      class=".verifykey.VerifyKeyView"
+      permission="zope2.Public"
+      />
+
 </configure>

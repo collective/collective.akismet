@@ -16,6 +16,7 @@ from recaptcha.client.captcha import displayhtml, submit
 from plone.registry.interfaces import IRegistry
 
 from collective.akismet.interfaces import IAkismetSettings
+from collective.akismet import _
 
 
 class AkismetValidatorView(BrowserView):
@@ -28,7 +29,6 @@ class AkismetValidatorView(BrowserView):
         self.settings = registry.forInterface(IAkismetSettings)
 
     def verify(self, input=None):
-        
         if self.settings.akismet_key and self.settings.akismet_key_site:
             request = self.request
             data = request.form
@@ -43,11 +43,16 @@ class AkismetValidatorView(BrowserView):
             d['comment_author_email'] = data['form.widgets.author_email']
 
             comment = data['form.widgets.text']
-
+            
             try:
+                # Returns True for spam and False for ham.
                 if api.comment_check(comment, d):
-                    raise ValidationError
+                    # Spam => not valid
+                    return False
+                else:
+                    # No spam => valid
+                    return True
             except AkismetError:
                 # Akismet temporarily down, so let comment through
                 # XXX: write to log
-                pass
+                return True

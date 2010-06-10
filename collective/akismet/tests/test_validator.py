@@ -27,5 +27,10 @@ class AkismetValidatorViewTest(PloneTestCase):
         view = view.__of__(self.portal)
         self.failUnless(view())
 
+    #def test_akisment_spam(self):
+    #    # This will cause Akismet to reject a comment.
+    #    title = u"Penis enlargment"
+    #    comment = u"pjsk uelzkgxpv stahlzxu gkadnwm qhrc mhrouy nhgrouw"
+
 def test_suite():
     return unittest.defaultTestLoader.loadTestsFromName(__name__)
