@@ -19,12 +19,6 @@ from collective.akismet.interfaces import IAkismetSettings
 from collective.akismet import _
 
 
-class AkismetReject(schema.ValidationError):
-    __doc__ = _("""Akismet thinks your comment is spam. If you are not a spam
-                   bot, please contact Akismet directly 
-                   http://akismet.com/contact/.""")
-
-
 class AkismetValidatorView(BrowserView):
     """Akismet validator view 
     """
