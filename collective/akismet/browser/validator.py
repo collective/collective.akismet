@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
-from akismet import Akismet, AkismetError
+from akismet import Akismet, AkismetError, APIKeyError
+from urllib2 import URLError, HTTPError
 
 from Products.Five import BrowserView
 
@@ -51,13 +52,23 @@ class AkismetValidatorView(BrowserView):
             
             try:
                 # Returns True for spam and False for ham.
+                if not api.verify_key():
+                    raise
                 if api.comment_check(comment, d):
                     # Spam => not valid
+                    self.context.plone_log("Akismet thinks this comment is spam: %s" % comment)
                     return False
                 else:
                     # No spam => valid
                     return True
-            except AkismetError:
-                # Akismet temporarily down, so let comment through
-                # XXX: write to log
+            except APIKeyError:
+                # Akismet raises APIKeyError if you have not yet set an API key
+                pass
+            except (HTTPError, URLError):
+                # Akismet raises an HTTPError or an URLError if the connection 
+                # to the Akismet web service fails.
+                self.context.plone_log("Akismet web service temporarily unavailable")
                 return True
+            except AkismetError:
+                # Akismet raises an AkismetError when a required value is missing
+                raise
