@@ -1,13 +1,10 @@
 Introduction
 ============
 
-`Akismet`_ is a web service for recognising spam comments. collective.akismet 
-provides a Plone integration of the `Akismet`_ web service and is based 
-on the `Akismet Python interface`_ package.
-
-.._Akismet: http://akismet.com/
-
-.._`Akismet Python interface`: http://pypi.python.org/pypi/akismet/
+`Akismet <http://akismet.com>`_ is a web service for recognising spam comments. 
+collective.akismet provides a Plone integration of the Akismet web service and 
+is based on the 
+`Akismet Python interface <http://pypi.python.org/pypi/akismet>`_ package.
 
 collective.akismet was developed as Spam protection plugin for 
 `plone.app.discussion`_, but it can be used independently
