@@ -4,6 +4,9 @@ Changelog
 1.0a2 - 2010-07-13
 ------------------
 
+* Move AkismetValidator from plone.app.discussion to collective.akismet.
+  [timo]
+  
 * Remove plone.app.discussion-captcha declaration.
   [timo]
 
