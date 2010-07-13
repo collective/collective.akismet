@@ -1,7 +1,14 @@
 Changelog
 =========
 
-1.0a1 - 2010/06/14
+1.0a2 - 2010-07-13
 ------------------
 
-- Initial release [timo, HammerToe]
+* Remove plone.app.discussion-captcha declaration.
+  [timo]
+
+1.0a1 - 2010-06-14
+------------------
+
+- Initial release 
+  [timo, HammerToe]
