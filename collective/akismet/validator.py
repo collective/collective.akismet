@@ -46,9 +46,6 @@ class AkismetValidator(validator.SimpleFieldValidator):
 
     def validate(self, value):
         super(AkismetValidator, self).validate(value)
-
-        data = self.request.form
-
         registry = queryUtility(IRegistry)
         settings = registry.forInterface(IDiscussionSettings)
         if settings.captcha == 'akismet':
