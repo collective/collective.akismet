@@ -16,6 +16,11 @@ service and raises a validation error if Akismet detects spam. The form
 validator expects three form fields/values in the request: 
 'form.widgets.author_name', 'form.widgets.author_email', and 'form.widgets.text'.
 
+Requirements
+------------
+
+collective.akismet requires at least plone.app.discussion 1.0b5.
+
 
 Buildout Installation
 ---------------------
