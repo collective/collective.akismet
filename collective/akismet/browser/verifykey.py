@@ -3,18 +3,9 @@
 import urllib
 import urllib2
 
-from akismet import Akismet, AkismetError
-
-from Acquisition import aq_inner
-
 from Products.Five import BrowserView
 
-from zope import schema
-
-from zope.annotation import factory
-from zope.component import adapts, queryMultiAdapter, queryUtility
-from zope.interface import Interface, implements
-from zope.publisher.interfaces.browser import IBrowserRequest
+from zope.component import queryUtility
 
 from plone.registry.interfaces import IRegistry
 
@@ -26,9 +17,6 @@ class VerifyKeyView(BrowserView):
     """
 
     def __call__(self):
-
-        context = aq_inner(self.context)
-        
         registry = queryUtility(IRegistry)
         settings = registry.forInterface(IAkismetSettings)
 
