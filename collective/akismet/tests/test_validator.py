@@ -4,7 +4,6 @@ from zope.component import getMultiAdapter
 
 from plone.registry import Registry
 
-from Products.CMFCore.utils import getToolByName
 from Products.PloneTestCase.ptc import PloneTestCase
 
 from collective.akismet.interfaces import IAkismetSettings
