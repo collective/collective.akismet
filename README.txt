@@ -25,7 +25,7 @@ collective.akismet requires at least plone.app.discussion 1.0b5.
 Buildout Installation
 ---------------------
 
-Add the following code to your buildout.cfg to install collective.captcha::
+Add the following code to your buildout.cfg to install collective.akismet::
 
     [buildout]
     ...
