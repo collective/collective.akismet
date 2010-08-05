@@ -12,8 +12,6 @@ from zope.component import adapts, queryMultiAdapter, queryUtility
 from zope.interface import Interface, implements
 from zope.publisher.interfaces.browser import IBrowserRequest
 
-from recaptcha.client.captcha import displayhtml, submit
-
 from plone.registry.interfaces import IRegistry
 
 from collective.akismet.interfaces import IAkismetSettings
