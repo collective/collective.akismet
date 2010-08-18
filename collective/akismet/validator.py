@@ -20,7 +20,6 @@ from plone.app.discussion.interfaces import ICaptcha
 from plone.app.discussion.interfaces import IComment
 from plone.app.discussion.interfaces import IDiscussionSettings
 from plone.app.discussion.interfaces import IDiscussionLayer
-from plone.app.discussion.interfaces import MessageFactory as _
 
 from collective.akismet.browser.validator import AkismetReject
 
