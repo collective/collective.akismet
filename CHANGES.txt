@@ -33,6 +33,7 @@ Changelog
 * Remove plone.app.discussion-captcha declaration.
   [timo]
 
+
 1.0a1 (2010-06-14)
 ------------------
 
