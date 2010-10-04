@@ -48,9 +48,16 @@ class AkismetValidatorView(BrowserView):
 
             comment = data['form.widgets.text']
             
+            # The Akismet web service does not accept unicode strings.
+            if isinstance(comment, unicode):
+                comment = comment.encode("utf-8")
+            if isinstance(d['comment_author'], unicode):
+                d['comment_author'] = d['comment_author'].encode("utf-8")
+                
             try:
                 # Returns True for spam and False for ham.
                 if not api.verify_key():
+                    self.context.plone_log("collective.akismet was not able to verify the Akismet key. Please check your settings.")
                     raise
                 if api.comment_check(comment, d):
                     # Spam => not valid
@@ -61,6 +68,7 @@ class AkismetValidatorView(BrowserView):
                     return True
             except APIKeyError:
                 # Akismet raises APIKeyError if you have not yet set an API key
+                self.context.plone_log("collective.akismet was not able to find a valid Akismet key. Please check your settings.")
                 pass
             except (HTTPError, URLError):
                 # Akismet raises an HTTPError or an URLError if the connection 
@@ -70,3 +78,6 @@ class AkismetValidatorView(BrowserView):
             except AkismetError:
                 # Akismet raises an AkismetError when a required value is missing
                 raise
+            except:
+                # This should never be reached
+                self.context.plone_log("collective.akismet raised an unexpected error.")

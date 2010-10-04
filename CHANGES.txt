@@ -1,8 +1,11 @@
 Changelog
 =========
 
-1.0a4 - unreleased
+1.0b1 - unreleased
 ------------------
+
+* Special character support added.
+  [timo]
 
 * Remove failing plone.app.discussion message factory import.
   [timo]
