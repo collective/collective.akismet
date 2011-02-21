@@ -40,7 +40,7 @@ class AkismetValidatorView(BrowserView):
             api = Akismet(self.settings.akismet_key, self.settings.akismet_key_site)
             
             d = {}
-            d['user_ip'] = request.get('REMOTE_ADDR', '')
+            d['user_ip'] = request.getClientAddr()
             d['user_agent'] = request.get('HTTP_USER_AGENT', '')
             d['referrer'] = request.get('HTTP_REFERER', '')
             d['comment_author'] = data['form.widgets.author_name']
