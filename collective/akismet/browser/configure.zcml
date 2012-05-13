@@ -5,6 +5,8 @@
     xmlns:i18n="http://namespaces.zope.org/i18n"
     i18n_domain="collective.akismet">
 
+  <include package="Products.CMFCore" />
+
   <!-- Control panel -->
   <browser:page
       name="akismet-settings"
